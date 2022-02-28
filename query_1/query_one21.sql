@@ -1,0 +1,11 @@
+
+  SET STATISTICS TIME ON;
+GO
+select spd.vacancies as vacancies,
+			spd.total_ec as total_ec
+			from Main.dbo.Staffing_Plan_spd as spd join Main.dbo.Staffing_Plan_n as sp on spd.ID = sp.ID
+			where designation='Project Manager'  and sp.to_date >= '2090-11-29 14:33:02' and
+			sp.from_date <= '2092-07-14 12:57:12'
+			and sp.company in (select name from Main.dbo.company_n where parent_company = '2company')
+
+
